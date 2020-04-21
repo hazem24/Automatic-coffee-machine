@@ -1,6 +1,9 @@
 # Coffee Vending Machine.
 > Software system for coffee vending machine which let the user choose his/her favorite type of coffee and insert the coins inside it and take his/her coffee. 
 
+## Watch The video to know more about vending machine.
+[![Vending Machine](https://img.youtube.com/2YR-EYTD62M/VID/0.jpg)](https://www.youtube.com/watch?v=2YR-EYTD62M)
+
 
 ## Inputs
 
@@ -28,7 +31,7 @@
 * FreeRtos v10.2.0
 
 ## State Machine Diagram
-![alt text](https://ibb.co/JChyCKY)
+![FSM](https://i.ibb.co/TrCbrkQ/State-Machine-Diagram.png)
 
 
 ## Tasks.
@@ -48,4 +51,4 @@
 
 ## Meta
 
-Hazem Khaled – [@YourTwitter](https://www.linkedin.com/in/hazem-khaled-407b1b17a/) – hazemkhaled1948@gmail.com
+Hazem Khaled – [@Linkedin](https://www.linkedin.com/in/hazem-khaled-407b1b17a/) – hazemkhaled1948@gmail.com
