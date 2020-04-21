@@ -2,7 +2,7 @@
 > Software system for coffee vending machine which let the user choose his/her favorite type of coffee and insert the coins inside it and take his/her coffee. 
 
 ## Watch The video to know more about vending machine.
-[![Vending Machine](https://img.youtube.com/2YR-EYTD62M/VID/0.jpg)](https://www.youtube.com/watch?v=2YR-EYTD62M)
+[![Vending Machine](https://img.youtube.com/vi/2YR-EYTD62M/0.jpg)](https://www.youtube.com/watch?v=2YR-EYTD62M)
 
 
 ## Inputs
