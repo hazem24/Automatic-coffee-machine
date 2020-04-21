@@ -24,7 +24,7 @@
    * Coins.
 
 ## Static architecture.
-![Static architecture](https://i.ibb.co/TrCbrkQ/State-Machine-Diagram.png)
+![Static architecture](https://i.ibb.co/cvPfqhX/Static-Arch.png)
 
 
 ## Operating System.
@@ -36,19 +36,25 @@
 
 ## Tasks.
 
-* 0.2.1
-    * CHANGE: Update docs (module code remains unchanged)
-* 0.2.0
-    * CHANGE: Remove `setDefaultXYZ()`  
-    * ADD: Add `init()`
-* 0.1.1
-    * FIX: Crash when calling `baz()` (Thanks @GenerousContributorName!)
-* 0.1.0
-    * The first proper release
-    * CHANGE: Rename `foo()` to `bar()`
-* 0.0.1
-    * Work in progress
+* System Init Task.
+    * Priority: 6 (Highest priority in the system).
+* Collect Coins.
+    * priority: 5  
+    * Description: Collect coins from the user.
+* Read Command.
+    * Priority: 4
+    * Description: Read Command via Keypad.
+* Refund:
+    * Priority: 3
+    * Description: Give Refund for user (if inserted coins < coffee_price || inserted_coins > coffee_price). 
+* Deliver Coffee:
+    * Priority: 2
+    * Description: Deliver choosen coffee to user.
+* Display message:
+    * Priority: 1
+    * Description: Display Message via LCD.
 
 ## Meta
 
 Hazem Khaled – [@Linkedin](https://www.linkedin.com/in/hazem-khaled-407b1b17a/) – hazemkhaled1948@gmail.com
+Ahmed Kamal– [@Linkedin](https://www.linkedin.com/in/ahmedmkamal60/)
