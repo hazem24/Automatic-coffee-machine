@@ -1,29 +1,28 @@
--# readme-example
-README.md example for your open-source project
 # Coffee Vending Machine.
 > Software system for coffee vending machine which let the user choose his/her favorite type of coffee and insert the coins inside it and take his/her coffee. 
 
 
-One to two paragraph statement about your product and what it does.
-
 ## Inputs
 
-* User Command: User can choose his/her favorite type of coffee by keypad.
-coins: User can input coins inside the machine to sell his/her favorite coffee type (coins represented as external interrupt).
-* Admin Command: The owner can add some magic commend to open coffee slot to add more coffee or to take all collected coins inside the machine.
+*User Command: 
+      *User can choose his/her favorite type of coffee by keypad.
+*coins: 
+      *User can input coins inside the machine to sell his/her favorite coffee type (coins represented as external interrupt).
+*Admin Command: 
+      *The owner can add some magic commend to open coffee slot to add more coffee or to take all collected coins inside the machine.
 
 ## Outputs
 
-* For User:
-    * Messages via (LCD LM044L).
-    * Coffee.
-    * Coins in case of refund.
+*For User:
+    *Messages via (LCD LM044L).
+    *Coffee.
+    *Coins in case of refund.
 
-* For Owner:
-   * Coins.
+*For Owner:
+   *Coins.
 
 ## Static architecture.
-![alt text](https://ibb.co/JChyCKY)
+![Static architecture](https://ibb.co/JChyCKY)
 
 
 ## Operating System.
