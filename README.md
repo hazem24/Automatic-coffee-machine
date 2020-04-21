@@ -56,5 +56,5 @@
 
 ## Meta
 
-Hazem Khaled – [@Linkedin](https://www.linkedin.com/in/hazem-khaled-407b1b17a/) – hazemkhaled1948@gmail.com
-Ahmed Kamal– [@Linkedin](https://www.linkedin.com/in/ahmedmkamal60/)
+* Hazem Khaled – [@Linkedin](https://www.linkedin.com/in/hazem-khaled-407b1b17a/) – hazemkhaled1948@gmail.com
+* Ahmed Kamal– [@Linkedin](https://www.linkedin.com/in/ahmedmkamal60/)
