@@ -71,8 +71,6 @@ int main(void)
                     FIFTH_PRIORITY,
                     &gu8_display_handle
                 ); 
-    vTaskStartScheduler();
-    /* Error Happen Here. */
-   
+    vTaskStartScheduler();   
 }
 
