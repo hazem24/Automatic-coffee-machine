@@ -25,12 +25,12 @@
 ## Target:
    * MCAL Layer for atmega32.
    * Just change the Infrastructure folder and MCAL Folder with your own target.
+   
+ ## Operating System.
+* FreeRtos v10.2.0
+
 ## Static architecture.
 ![Static architecture](https://i.ibb.co/cvPfqhX/Static-Arch.png)
-
-
-## Operating System.
-* FreeRtos v10.2.0
 
 ## State Machine Diagram
 ![FSM](https://i.ibb.co/TrCbrkQ/State-Machine-Diagram.png)
