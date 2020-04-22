@@ -22,7 +22,9 @@
 
 * For Owner:
    * Coins.
-
+## Target:
+   * MCAL Layer for atmega32.
+   * Just change the Infrastructure folder and MCAL Folder with your own target.
 ## Static architecture.
 ![Static architecture](https://i.ibb.co/cvPfqhX/Static-Arch.png)
 
