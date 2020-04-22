@@ -10,7 +10,7 @@
 * User Command:
     * User can choose his/her favorite type of coffee by keypad.
 * coins:
-    * User can input coins inside the machine to sell his/her favorite coffee type (coins represented as external interrupt).
+    * User can input coins inside the machine to buy his/her favorite coffee type (coins represented as external interrupt).
 * Admin Command:
     * The owner can add some magic commend to open coffee slot to add more coffee or to take all collected coins inside the machine.
 ## Outputs
