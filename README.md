@@ -54,7 +54,7 @@
     * Description: Deliver choosen coffee to user.
 * Display message:
     * Priority: 1
-    * Description: Display Message via LCD.
+    * Description: Display Messages via LCD.
 
 ## Meta
 
