@@ -48,7 +48,7 @@
     * Description: Read Command via Keypad.
 * Refund:
     * Priority: 3
-    * Description: Give Refund for user (if inserted coins < coffee_price || inserted_coins > coffee_price). 
+    * Description: Give Refund to user (if inserted coins < coffee_price || inserted_coins > coffee_price). 
 * Deliver Coffee:
     * Priority: 2
     * Description: Deliver choosen coffee to user.
