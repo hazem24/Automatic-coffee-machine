@@ -32,7 +32,7 @@
 #define THANK_YOU               "Thanks"
 #define CAPPUCCINO_MSG                    " Cappuccino  "
 #define NORMAL_COFFEE_OPTION_MSG          " Normal Coffee "
-#define COFFEE_WITH_MILK_OPTION_MSG       " Milk Coffee "
+#define COFFEE_WITH_MILK_OPTION_MSG       " Choco Coffee "
 
 /* 
     * Counter Down in sec.

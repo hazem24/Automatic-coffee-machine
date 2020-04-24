@@ -44,6 +44,9 @@
 /* ID of the software timer used for display msg. */
 #define SW_TIMER_DISPLAY_ID             (void*)0
 
+/* ID of the software timer used for display msg. */
+#define SW_TIMER_DISPLAY_ID_2           (void*)2
+
 /* ID of count down Timer. */
 #define SW_TIMER_COUNT_DOWN_TIMER_ID       (void*)1
 
@@ -92,6 +95,7 @@ static void COFFEE_MACHINE_Display_MainPage(const sint8_t au8_category_number,co
  */
 static uint8_t COFFEE_MACHINE_MSG_sent();
 
+static void CONTROL_VALVE ( TimerHandle_t xTimer );
 
 /**
  * @brief This is a callback function called 
@@ -144,6 +148,9 @@ static SemaphoreHandle_t mutex_for_display_mailbox = NULL;
 /* Handler for timer. */
 static TimerHandle_t  g_count_down_timer = NULL;
 
+/* Handler for timer2. */
+static TimerHandle_t  g_count_down_timer2 = NULL;
+
 /* semaphore notifying Collect Coins Task to start it's job. */
 static SemaphoreHandle_t sema_allowable_time_for_insert_coins = NULL;
 
@@ -180,7 +187,9 @@ static SemaphoreHandle_t sema_deliver_coffee = NULL;
 /* Global Variable indicate if system is init or Not. */
 static uint8_t gu8_is_init = FALSE;
 
+static uint8_t gu8_cvalve_flag= FALSE; 
 
+static uint8_t gu8_coffee_kind=NULL; 
 /**
  * @brief Task to => Init all Modules needed.
  * @param a_ptr 
@@ -251,6 +260,14 @@ void System_Init_Task(void* a_ptr)
                 pdTRUE, SW_TIMER_COUNT_DOWN_TIMER_ID,
                 take_coins_timer_CallBack
             );
+			  /* Count Down Software Timer. */
+		    g_count_down_timer2 = xTimerCreate
+			    (
+			       NULL,
+			      2000,
+			     pdTRUE, SW_TIMER_DISPLAY_ID_2 ,
+			    CONTROL_VALVE
+			    );
             /* Send MailBox for Task Display to Display Welcome Msg. */
             xQueueSend(display_msg_mail_box, &g_ptr_display_mailbox ,(TickType_t) portMAX_DELAY);
 
@@ -409,7 +426,7 @@ void Read_Cmd_Task( void* a_ptr )
 
                         /* Mutex Available Write Your message Safely. */
                         au8_coffee_id = au8_key_pressed - 0x30;
-
+						gu8_coffee_kind=au8_coffee_id; 
                         /* Insert Coins Page. */
                         g_mail_box.message_id = INSERT_COINS_MESSAGE_ID;
                         strcpy( g_mail_box.message, INSERT_COIN_MSG );
@@ -617,7 +634,9 @@ void Deliver_Coffee_Task( void* a_ptr )
             strcpy( g_mail_box.message, "Preparing" );
             
             xQueueSend( display_msg_mail_box, &g_ptr_display_mailbox, (TickType_t)0 );
-            
+			
+			xTimerStart(g_count_down_timer2, (TickType_t)portMAX_DELAY);
+			
             /* Transfer this task to waiting state. */
             vTaskDelay(( COUNT_DOWN_IN_SEC * COUNT_DOWN_PERIOD_MS)/portTICK_PERIOD_MS); 
 
@@ -847,7 +866,87 @@ static void display_Char_CallBack( TimerHandle_t xTimer )
     /* Give Semaphore of Display Chars. */
     xSemaphoreGive( sema_display_char );
 }
-
+static void CONTROL_VALVE ( TimerHandle_t xTimer )
+{
+	PORTD=0XF0; 
+	if( 1==gu8_coffee_kind)
+	{
+		DDRB |=(1<<7); 
+		PORTB|=(1<<7); 
+		PORTB&=~(1<<6);
+		PORTB&=~(1<<5);
+		gu8_cvalve_flag=0;
+		xTimerStop( g_count_down_timer2, (TickType_t)portMAX_DELAY );
+	}
+	else if (2==gu8_coffee_kind)
+	{
+		if(gu8_cvalve_flag==0)
+		{
+			DDRB |=(1<<7); 
+			DDRB |=(1<<6); 
+			DDRB |=(1<<5); 
+		   PORTB|=(1<<6); 
+		   PORTB&=~(1<<7);
+		   PORTB&=~(1<<5);
+		   gu8_cvalve_flag++; 
+		}
+		else if(gu8_cvalve_flag==1)
+		{
+			gu8_cvalve_flag++;
+		}
+		else if(gu8_cvalve_flag==2)
+		{
+			PORTB|=(1<<7);
+			PORTB&=~(1<<6);
+			PORTB&=~(1<<5);
+			gu8_cvalve_flag++;
+		}
+		else if(gu8_cvalve_flag==3)
+		{
+			PORTB&=~(1<<6);
+			PORTB&=~(1<<7);
+			PORTB&=~(1<<5);
+			gu8_cvalve_flag=0;
+			xTimerStop( g_count_down_timer2, (TickType_t)portMAX_DELAY );
+		}
+	}
+	else if(3==gu8_coffee_kind)
+	{
+		if(gu8_cvalve_flag==0)
+		{
+			DDRB |=(1<<7); 
+			DDRB |=(1<<6); 
+			DDRB |=(1<<5); 
+		   PORTB|=(1<<5); 
+		   PORTB&=~(1<<7);
+		   PORTB&=~(1<<6);
+		   gu8_cvalve_flag++; 
+		}
+		else if(gu8_cvalve_flag==1)
+		{
+			gu8_cvalve_flag++;
+		}
+		else if(gu8_cvalve_flag==2)
+		{
+			PORTB|=(1<<7);
+			PORTB&=~(1<<6);
+			PORTB&=~(1<<5);
+			gu8_cvalve_flag++;
+		}
+		else if(gu8_cvalve_flag==3)
+		{
+			PORTB&=~(1<<6);
+			PORTB&=~(1<<7);
+			PORTB&=~(1<<5);
+			gu8_cvalve_flag=0;
+			xTimerStop( g_count_down_timer2, (TickType_t)portMAX_DELAY );
+		}
+	}
+	else
+	{
+			
+	}
+}
 /**
  * @brief This is a callback function called when take coins time finished.
  * @param xTimer 
